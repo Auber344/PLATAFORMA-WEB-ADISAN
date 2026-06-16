@@ -1,0 +1,203 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": [
+        "hola", "buenas", "buenos dias", "buenas tardes", "buenas noches",
+        "que tal", "hey", "hola como estas", "buen dia", "holi", "alo",
+        "ola", "como estas", "tal", "saludos", "muy buenas", "que onda"
+      ],
+      "responses": [
+        "¡Hola! Soy el asistente virtual de ADISAN. ¿En qué puedo ayudarte?",
+        "¡Buen día! Soy el asistente de ADISAN. ¿Cómo puedo servirte?",
+        "Hola, bienvenido a ADISAN. ¿En qué te ayudo?"
+      ]
+    },
+    {
+      "tag": "despedida",
+      "patterns": [
+        "adios", "hasta luego", "nos vemos", "chau", "gracias hasta luego",
+        "que tengas buen dia", "bye", "hasta pronto", "me voy", "ya me voy",
+        "hasta la proxima", "cuídate", "cuidate", "que te vaya bien", "fue un placer"
+      ],
+      "responses": [
+        "¡Gracias por contactarte con ADISAN! Que tengas un excelente día.",
+        "Hasta luego, gracias por comunicarte con nosotros.",
+        "¡Nos vemos! Si necesitas algo más, aquí estoy."
+      ]
+    },
+    {
+      "tag": "gracias",
+      "patterns": [
+        "gracias", "muchas gracias", "te agradezco", "gracias por tu ayuda",
+        "agradecido", "thanks", "gracias totales", "muy amable", "gracias por todo",
+        "te lo agradezco", "vale gracias", "mil gracias", "gracias por la informacion"
+      ],
+      "responses": [
+        "¡De nada! Estoy aquí para ayudarte.",
+        "Con gusto, para eso estoy.",
+        "¡Un placer ayudarte!"
+      ]
+    },
+    {
+      "tag": "stock",
+      "patterns": [
+        "hay stock", "tienen stock", "cuantas cajas quedan",
+        "tienen disponible", "hay disponible", "que stock tienen",
+        "cuanto stock hay", "aun hay", "tienen en inventario", "cuanto tienen",
+        "hay existencia", "disponibilidad", "hay producto", "me queda",
+        "todavia hay", "cuanto queda de", "hay en stock", "tienen existencia",
+        "aun tienes stock", "stock disponible", "ver stock",
+        "consulta de stock", "que stock tiene", "dime el stock"
+      ],
+      "responses": ["Consultando stock..."]
+    },
+    {
+      "tag": "productos",
+      "patterns": [
+        "que productos venden", "que venden", "listado de productos",
+        "cuales son sus productos", "que ofrecen",
+        "que productos tienen", "quiero ver productos", "muestrame productos",
+        "quiero comprar", "que puedo comprar",
+        "ensename productos", "dame el catalogo", "lista de productos",
+        "que articulos venden", "que mercaderia tienen",
+        "que tienen para vender", "cual es su catalogo",
+        "muestrame el catalogo", "quiero el catalogo"
+      ],
+      "responses": ["Consultando productos..."]
+    },
+    {
+      "tag": "precio",
+      "patterns": [
+        "cuanto cuesta", "que precio tiene", "a como esta",
+        "cuanto vale", "me puedes dar el precio",
+        "precio del producto", "a cuanto", "que precio tienen",
+        "cuanto sale", "cual es el precio",
+        "en cuanto esta", "cuanto esta", "a como vende",
+        "precio de venta", "precio al publico",
+        "me interesa el precio", "cotizacion", "cotizar"
+      ],
+      "responses": ["Consultando precios..."]
+    },
+    {
+      "tag": "pedido_estado",
+      "patterns": [
+        "donde esta mi pedido", "estado de mi pedido", "como va mi pedido",
+        "en que estado esta mi pedido", "como va el pedido", "mi pedido",
+        "quiero saber mi pedido", "consulta de pedido", "ver mi pedido",
+        "como voy con mi pedido", "como esta mi pedido", "revisar pedido",
+        "seguimiento de pedido", "tracking", "rastrear pedido",
+        "consulta mi pedido", "dime el estado de mi pedido",
+        "quiero hacer seguimiento", "como va eso", "progreso del pedido"
+      ],
+      "responses": ["Consultando estado de tu pedido..."]
+    },
+    {
+      "tag": "pedido_llegada",
+      "patterns": [
+        "cuando llega mi pedido", "a que hora llega", "fecha de entrega",
+        "cuando lo entregan", "tiempo de entrega", "cuando llegara",
+        "cuanto tarda en llegar", "hora estimada de llegada",
+        "cuando me llega", "cuando lo recibo", "fecha estimada",
+        "cuando entregan", "dia de entrega", "cuando llega",
+        "tiempo de llegada", "cuanto falta para que llegue",
+        "cuanto demora", "en cuanto tiempo llega", "fecha de llegada"
+      ],
+      "responses": ["Consultando fecha estimada de entrega..."]
+    },
+    {
+      "tag": "pedido_enviado",
+      "patterns": [
+        "mi pedido fue enviado", "ya enviaron mi pedido",
+        "ya lo despacharon", "esta en camino", "fue despachado",
+        "ya lo enviaron", "lo mandaron", "esta listo para envio",
+        "lo enviaron ya", "fue enviado", "despacharon", "sale hoy",
+        "ya salio", "esta preparado", "ya lo mandaron",
+        "ya esta en ruta", "ya salio el pedido", "confirmacion de envio"
+      ],
+      "responses": ["Consultando estado de envío..."]
+    },
+    {
+      "tag": "horario",
+      "patterns": [
+        "horario de atencion", "a que hora atienden", "cuando abren",
+        "horarios", "en que horario trabajan",
+        "horario de la tienda", "atienden sabado", "atienden domingo",
+        "abierto", "que dias atienden", "horario de atencion",
+        "a que hora abren", "a que hora cierran", "cual es el horario",
+        "cuando estan abiertos", "dias de atencion"
+      ],
+      "responses": [
+        "Nuestro horario de atención es de lunes a viernes de 8:00 am a 6:00 pm y sábados de 8:00 am a 1:00 pm. Estamos cerrados los domingos."
+      ]
+    },
+    {
+      "tag": "ayuda",
+      "patterns": [
+        "que puedes hacer", "ayuda", "como me ayudas", "funciones",
+        "que haces", "para que sirves", "ayudame", "necesito ayuda",
+        "puedes ayudarme", "que sabes hacer", "tus funciones",
+        "como funcionas", "que servicios tienes", "que servicio ofreces",
+        "en que me puedes ayudar", "quiero ayuda"
+      ],
+      "responses": [
+        "Puedo ayudarte a:\n• Consultar nuestro stock y productos disponibles\n• Ver precios\n• Consultar el estado de tu pedido\n• Saber cuándo llegará tu pedido\n• Ver ofertas vigentes\n• Decirte nuestro horario\n\n¿Qué necesitas?"
+      ]
+    },
+    {
+      "tag": "ofertas",
+      "patterns": [
+        "hay ofertas", "tienen ofertas", "que ofertas tienen",
+        "promociones", "descuentos", "ofertas",
+        "esta en oferta", "productos en oferta", "paquetes", "combos",
+        "hay promocion", "que promociones tienen", "liquidacion",
+        "precio especial", "descuento", "oferta", "paquete",
+        "que combos tienen", "hay combo", "promocion especial",
+        "que esta en oferta", "ofertas especiales", "cuales son las ofertas",
+        "que promos hay", "hay descuento", "precio de oferta",
+        "necesito ofertas", "dame las ofertas"
+      ],
+      "responses": ["Consultando ofertas..."]
+    },
+    {
+      "tag": "sugerir_producto",
+      "patterns": [
+        "quiero agua", "busco agua", "necesito agua", "donde hay agua",
+        "venden agua", "quiero gaseosa", "busco gaseosa",
+        "necesito arroz", "quiero azucar", "busco aceite",
+        "quiero comprar agua", "donde encuentro", "tienes agua",
+        "tienes gaseosa", "quiero un producto", "me recomendarias",
+        "que me recomiendas", "recomiendame", "sugiere algo",
+        "que me vendria bien", "cual me recomiendas",
+        "necesito comprar", "quiero un", "busco un",
+        "necesito un", "anda", "tienes", "quiero ver",
+        "estoy buscando", "me hace falta", "requiero",
+        "dame un", "necesito"
+      ],
+      "responses": ["Buscando producto..."]
+    },
+    {
+      "tag": "navegacion",
+      "patterns": [
+        "como compro", "donde compro", "quiero ir al catalogo",
+        "abrir catalogo", "ver catalogo de productos",
+        "donde veo los productos", "como agrego al carrito",
+        "como comprar", "quiero ver mis pedidos",
+        "donde veo mis pedidos", "ir a pedidos",
+        "como hago un pedido", "quiero pagar",
+        "donde veo el carrito", "ir al carrito",
+        "llevame al catalogo", "llevame a pedidos",
+        "abrir carrito", "quiero ver mi carrito",
+        "donde esta el carrito", "como me registro",
+        "quiero registrarme", "como inicio sesion",
+        "donde inicio sesion", "como ingreso",
+        "llevame al inicio", "quiero registrarme",
+        "como creo una cuenta", "llevame",
+        "dirigeme", "mandame a", "abrir",
+        "quiero ir a", "llevame a",
+        "navigate"
+      ],
+      "responses": ["Mostrando navegación..."]
+    }
+  ]
+}

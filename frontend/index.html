@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ADISAN</title>
+
+  <link rel="stylesheet" href="styles/styles.css">
+
+</head>
+<body class="login-body">
+
+<div class="login-container">
+
+  <div class="login-card">
+
+    <h1 class="login-title">
+      ADISAN
+    </h1>
+
+    <p class="login-subtitle">
+      Sistema de Gestión de Ventas
+    </p>
+
+    <div class="input-group">
+
+      <label>Usuario</label>
+
+      <input
+        type="text"
+        id="user"
+        placeholder="Ingrese su usuario"
+      >
+
+    </div>
+
+    <div class="input-group">
+
+      <label>Contraseña</label>
+
+      <input
+        type="password"
+        id="pass"
+        placeholder="Ingrese su contraseña"
+      >
+
+    </div>
+
+    <button
+      class="btn-login"
+      onclick="login()"
+    >
+      Ingresar
+    </button>
+
+    <button
+      class="btn-register"
+      onclick="window.location='registro.html'"
+    >
+      Registrarse
+    </button>
+
+    <p id="mensajeLogin" class="mensaje-error"></p>
+
+  </div>
+
+</div>
+<script>
+document.body.style.visibility = 'visible';
+</script>
+<script>
+async function login(){
+  const usuario = document.getElementById('user').value.trim();
+  const password = document.getElementById('pass').value.trim();
+  const mensaje = document.getElementById('mensajeLogin');
+  mensaje.innerText = '';
+
+  if (!usuario || !password) {
+    mensaje.innerText = 'Complete todos los campos';
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ usuario, password })
+    });
+    const data = await res.json();
+    if (data.success) {
+      localStorage.setItem('usuario', data.usuario);
+      localStorage.setItem('id', data.id);
+      localStorage.setItem('rol', data.rol);
+      if (data.rol === 'admin') {
+        window.location = 'dashboard.html';
+      } else {
+        window.location = 'inicio.html';
+      }
+    } else {
+      Swal.fire({ icon: 'error', title: 'Error', text: data.message || 'Usuario o contraseña incorrectos', confirmButtonColor: '#2563eb' });
+    }
+  } catch (error) {
+    mensaje.innerText = 'Error de conexión con el servidor';
+  }
+}
+
+document.addEventListener('keydown', e => {
+
+  if(e.key === 'Enter'){
+
+    login();
+
+  }
+
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos - ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li id="menuInicio" onclick="ir('inicio.html')" style="display:none"><i class="fa-solid fa-house"></i> Inicio</li>
+        <li id="menuDashboard" onclick="ir('dashboard.html')"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+        <li id="menuProductos" onclick="ir('productos.html')"><i class="fa-solid fa-box"></i> Añadir Productos</li>
+        <li id="menuUsuarios" onclick="ir('usuarios.html')"><i class="fa-solid fa-users"></i> Usuarios</li>
+        <li id="menuProveedores" onclick="ir('proveedores.html')"><i class="fa-solid fa-truck"></i> Proveedores</li>
+        <li id="menuOfertas" onclick="ir('ofertas.html')"><i class="fa-solid fa-tag"></i> Ofertas</li>
+        <li class="active"><i class="fa-solid fa-bag-shopping"></i> Pedidos</li>
+        <li onclick="ir('catalogo.html')"><i class="fa-solid fa-store"></i> Comprar productos</li>
+        <li onclick="ir('carrito.html')"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="contadorCarrito" class="cart-badge">0</span></li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>PEDIDOS</h1>
+        <p class="subtitle">Gestión y seguimiento de pedidos</p>
+      </div>
+      <div class="usuario-box"><i class="fa-solid fa-user"></i> <span id="usuario"></span> - <span id="rol"></span></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon blue"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div>
+          <h3>Pedidos Totales</h3>
+          <p id="totalPedidos">0</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon orange"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <h3>Pendientes</h3>
+          <p id="pedidosPendientes">0</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon purple"><i class="fa-solid fa-truck-fast"></i></div>
+        <div>
+          <h3>En Camino</h3>
+          <p id="pedidosCamino">0</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon green"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+          <h3>Entregados</h3>
+          <p id="pedidosEntregados">0</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-clipboard-list"></i> Lista de Pedidos</h2>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th id="columnaId"><i class="fa-solid fa-hashtag"></i> ID</th>
+              <th><i class="fa-solid fa-user"></i> Cliente</th>
+              <th><i class="fa-solid fa-money-bill-wave"></i> Total</th>
+              <th><i class="fa-solid fa-credit-card"></i> Método</th>
+              <th><i class="fa-solid fa-circle-info"></i> Estado</th>
+              <th><i class="fa-solid fa-calendar"></i> Fecha</th>
+              <th><i class="fa-solid fa-gear"></i> Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaPedidos"></tbody>
+        </table>
+        <div id="paginationPedidos" class="pagination"></div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

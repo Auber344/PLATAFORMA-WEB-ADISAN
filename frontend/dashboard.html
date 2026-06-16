@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li id="menuDashboard" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+        <li id="menuProductos" onclick="ir('productos.html')"><i class="fa-solid fa-box"></i> Añadir Productos</li>
+        <li id="menuUsuarios" onclick="ir('usuarios.html')"><i class="fa-solid fa-users"></i> Usuarios</li>
+        <li id="menuProveedores" onclick="ir('proveedores.html')"><i class="fa-solid fa-truck"></i> Proveedores</li>
+        <li id="menuOfertas" onclick="ir('ofertas.html')"><i class="fa-solid fa-tag"></i> Ofertas</li>
+        <li onclick="ir('pedidos.html')"><i class="fa-solid fa-bag-shopping"></i> Pedidos</li>
+        <li onclick="ir('catalogo.html')"><i class="fa-solid fa-store"></i> Comprar productos</li>
+        <li onclick="ir('carrito.html')"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="contadorCarrito" class="cart-badge">0</span></li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>DASHBOARD</h1>
+        <p class="subtitle">Panel de control del sistema ADISAN</p>
+      </div>
+      <div class="usuario-box"><i class="fa-solid fa-user"></i> <span id="usuario"></span> - <span id="rol"></span></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon blue"><i class="fa-solid fa-box"></i></div>
+        <h3>Productos</h3>
+        <p id="totalProductos">0</p>
+      </div>
+      <div class="card">
+        <div class="card-icon green"><i class="fa-solid fa-users"></i></div>
+        <h3>Usuarios</h3>
+        <p id="totalUsuarios">0</p>
+      </div>
+      <div class="card">
+        <div class="card-icon purple"><i class="fa-solid fa-bag-shopping"></i></div>
+        <h3>Pedidos</h3>
+        <p id="totalPedidosCard">0</p>
+      </div>
+      <div class="card">
+        <div class="card-icon orange"><i class="fa-solid fa-sack-dollar"></i></div>
+        <h3>Ventas</h3>
+        <p id="totalVentas">S/ 0</p>
+      </div>
+    </div>
+
+    <div class="dashboard-chart-wrapper">
+      <div class="chart-container">
+        <h3><i class="fa-solid fa-chart-pie"></i> Ventas por Producto</h3>
+        <div class="chart-box">
+          <canvas id="ventasChart"></canvas>
+        </div>
+      </div>
+      <div class="best-seller-card" id="bestSellerCard">
+        <div class="bs-header"><i class="fa-solid fa-trophy"></i> Producto más vendido</div>
+        <div class="bs-product">
+          <div class="bs-icon"><i class="fa-solid fa-crown"></i></div>
+          <div class="bs-name" id="bsNombre">—</div>
+        </div>
+        <div class="bs-stats">
+          <div class="bs-stat">
+            <div class="bs-stat-label">Unidades vendidas</div>
+            <div class="bs-stat-value" id="bsUnidades">0</div>
+          </div>
+          <div class="bs-stat">
+            <div class="bs-stat-label">Ingreso generado</div>
+            <div class="bs-stat-value gold" id="bsIngreso">S/ 0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

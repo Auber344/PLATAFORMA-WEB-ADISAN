@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li class="active"><i class="fa-solid fa-house"></i> Inicio</li>
+        
+        <li onclick="ir('pedidos.html')"><i class="fa-solid fa-bag-shopping"></i> Pedidos</li>
+
+        <li onclick="ir('catalogo.html')"><i class="fa-solid fa-store"></i> Comprar productos</li>
+        <li onclick="ir('carrito.html')"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="contadorCarrito" class="cart-badge">0</span></li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>INICIO</h1>
+        <p class="subtitle">Bienvenido al sistema de compras ADISAN</p>
+      </div>
+      <div class="usuario-box"><i class="fa-solid fa-user"></i> <span id="usuario"></span> - <span id="rol"></span></div>
+    </div>
+
+    <div class="landing-hero">
+      <h1>¡Bienvenido, <span id="bienvenidoUsuario">Usuario</span>!</h1>
+      <p>Explora nuestro catálogo de productos, agrega al carrito lo que necesites y realiza tus pedidos de forma rápida y segura.</p>
+      <div class="hero-icon"><i class="fa-solid fa-store"></i></div>
+    </div>
+
+    <div class="landing-grid">
+      <div class="landing-card" onclick="ir('catalogo.html')">
+        <div class="lc-icon blue"><i class="fa-solid fa-store"></i></div>
+        <h3>Ver Catálogo</h3>
+        <p>Explora todos los productos disponibles y sus presentaciones</p>
+      </div>
+      <div class="landing-card" onclick="ir('carrito.html')">
+        <div class="lc-icon orange"><i class="fa-solid fa-cart-shopping"></i></div>
+        <h3>Mi Carrito</h3>
+        <p>Revisa los productos que has agregado y finaliza tu compra</p>
+      </div>
+      <div class="landing-card" onclick="ir('pedidos.html')">
+        <div class="lc-icon green"><i class="fa-solid fa-bag-shopping"></i></div>
+        <h3>Mis Pedidos</h3>
+        <p>Da seguimiento a tus pedidos realizados y su estado actual</p>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Editar Producto
+  </title>
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link
+  rel="stylesheet"
+  href="styles/styles.css">
+
+</head>
+<body>
+
+<div class="container edit-page-container">
+
+  <main class="main">
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <h1>
+
+          <i class="fa-solid fa-pen-to-square"></i>
+
+          Editar Producto
+
+        </h1>
+
+      </div>
+
+      <!-- PROVEEDOR (solo lectura) -->
+
+      <div class="proveedor-global">
+
+        <label>
+          <i class="fa-solid fa-truck"></i> Proveedor
+        </label>
+
+        <input type="hidden" id="proveedor" value="">
+
+        <span id="proveedorNombre" style="font-weight:600;font-size:16px;color:var(--text-primary);padding:8px 0;display:block">
+          Cargando...
+        </span>
+
+      </div>
+
+      <hr class="divider">
+
+      <!-- PRODUCTOS -->
+
+      <div
+      id="productosContainer"
+      class="productos-container">
+
+      </div>
+
+      <br>
+
+      <div class="acciones-producto">
+
+        <button
+        onclick="guardarProducto()">
+
+          <i class="fa-solid fa-floppy-disk"></i>
+
+          Guardar Cambios
+
+        </button>
+
+        <button
+        onclick="window.location='productos.html'"
+        class="btn-secondary">
+
+          <i class="fa-solid fa-arrow-left"></i>
+
+          Volver
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

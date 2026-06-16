@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li id="menuInicio" onclick="ir('inicio.html')" style="display:none"><i class="fa-solid fa-house"></i> Inicio</li>
+        <li id="menuDashboard" onclick="ir('dashboard.html')"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+        <li id="menuProductos" onclick="ir('productos.html')"><i class="fa-solid fa-box"></i> Añadir Productos</li>
+        <li id="menuUsuarios" onclick="ir('usuarios.html')"><i class="fa-solid fa-users"></i> Usuarios</li>
+        <li id="menuProveedores" onclick="ir('proveedores.html')"><i class="fa-solid fa-truck"></i> Proveedores</li>
+        <li id="menuOfertas" onclick="ir('ofertas.html')"><i class="fa-solid fa-tag"></i> Ofertas</li>
+        <li onclick="ir('pedidos.html')"><i class="fa-solid fa-bag-shopping"></i> Pedidos</li>
+        <li onclick="ir('catalogo.html')"><i class="fa-solid fa-store"></i> Comprar productos</li>
+        <li class="active"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="contadorCarrito" class="cart-badge">0</span></li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>CARRITO DE COMPRAS</h1>
+        <p class="subtitle">Resumen de productos seleccionados</p>
+      </div>
+      <div class="usuario-box"><i class="fa-solid fa-user"></i> <span id="usuario"></span> - <span id="rol"></span></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-cart-shopping"></i> Productos en el carrito</h2>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th><i class="fa-solid fa-box"></i> Producto</th>
+              <th><i class="fa-solid fa-layer-group"></i> Presentación</th>
+              <th><i class="fa-solid fa-money-bill-wave"></i> Precio</th>
+              <th><i class="fa-solid fa-sort-numeric-up"></i> Cantidad</th>
+              <th><i class="fa-solid fa-coins"></i> Subtotal</th>
+              <th><i class="fa-solid fa-trash"></i> Eliminar</th>
+            </tr>
+          </thead>
+          <tbody id="tablaCarrito"></tbody>
+        </table>
+        <div id="carritoEmpty" class="carrito-empty oculto">
+          <i class="fa-solid fa-cart-plus"></i>
+          <h3>Tu carrito está vacío</h3>
+          <p>Agrega productos desde el catálogo para empezar a comprar</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel resumen-carrito">
+      <div class="total-box">
+        <div class="total-label">Total a pagar</div>
+        <h2 id="totalCarrito"><i class="fa-solid fa-wallet"></i> S/ 0.00</h2>
+      </div>
+      <div class="pago-box">
+        <label><i class="fa-solid fa-credit-card"></i> Método de Pago</label>
+        <select id="metodoPago">
+          <option value="Yape">Yape</option>
+          <option value="Tarjeta">Tarjeta</option>
+          <option value="Efectivo">Efectivo</option>
+        </select>
+      </div>
+      <div class="acciones-carrito">
+        <button onclick="finalizarCompra()"><i class="fa-solid fa-circle-check"></i> Finalizar Compra</button>
+        <button onclick="window.location='catalogo.html'" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Seguir Comprando</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

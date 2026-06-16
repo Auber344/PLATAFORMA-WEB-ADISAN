@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proveedores - ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li id="menuDashboard" onclick="ir('dashboard.html')"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+        <li id="menuProductos" onclick="ir('productos.html')"><i class="fa-solid fa-box"></i> Añadir Productos</li>
+        <li id="menuUsuarios" onclick="ir('usuarios.html')"><i class="fa-solid fa-users"></i> Usuarios</li>
+        <li class="active"><i class="fa-solid fa-truck"></i> Proveedores</li>
+        <li id="menuOfertas" onclick="ir('ofertas.html')"><i class="fa-solid fa-tag"></i> Ofertas</li>
+        <li onclick="ir('pedidos.html')"><i class="fa-solid fa-bag-shopping"></i> Pedidos</li>
+        <li onclick="ir('catalogo.html')"><i class="fa-solid fa-store"></i> Comprar productos</li>
+        <li onclick="ir('carrito.html')"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="contadorCarrito" class="cart-badge">0</span></li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>PROVEEDORES</h1>
+        <p class="subtitle">Gestión de proveedores del sistema</p>
+      </div>
+      <div class="usuario-box"><i class="fa-solid fa-user"></i> <span id="usuario"></span> - <span id="rol"></span></div>
+    </div>
+
+    <div class="panel" id="panelProveedor">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-truck"></i> Registrar Proveedor</h2>
+      </div>
+      <div class="proveedor-form-grid">
+        <div class="input-icon-wrapper">
+          <i class="fa-solid fa-building"></i>
+          <input type="text" id="nombreEmpresa" placeholder="Nombre de empresa">
+        </div>
+        <div class="input-icon-wrapper">
+          <i class="fa-solid fa-id-card"></i>
+          <input type="text" id="ruc" placeholder="RUC (11 dígitos)">
+        </div>
+        <div class="input-icon-wrapper">
+          <i class="fa-solid fa-phone"></i>
+          <input type="text" id="telefonoProveedor" placeholder="Teléfono (9 dígitos)">
+        </div>
+        <div class="input-icon-wrapper">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" id="correoProveedor" placeholder="Correo electrónico">
+        </div>
+      </div>
+      <input type="text" id="direccionProveedor" placeholder="Dirección (opcional)">
+      <br><br>
+      <button onclick="registrarProveedor()"><i class="fa-solid fa-floppy-disk"></i> Guardar Proveedor</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-building"></i> Lista Proveedores</h2>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th><i class="fa-solid fa-building"></i> Empresa</th>
+              <th><i class="fa-solid fa-id-card"></i> RUC</th>
+              <th><i class="fa-solid fa-phone"></i> Teléfono</th>
+              <th><i class="fa-solid fa-envelope"></i> Correo</th>
+              <th><i class="fa-solid fa-location-dot"></i> Dirección</th>
+              <th><i class="fa-solid fa-tools"></i> Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaProveedores"></tbody>
+        </table>
+        <div id="paginationProveedores" class="pagination"></div>
+      </div>
+    </div>
+  </main>
+</div>
+<div id="modalEditarProveedor" class="modal-proveedor" style="display:none">
+  <div class="modal-proveedor-content">
+    <h2><i class="fa-solid fa-pen-to-square"></i> Editar Proveedor</h2>
+    <input type="hidden" id="editarProveedorId">
+    <div class="form-grid" style="display:flex;flex-direction:column;gap:12px">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-building"></i>
+        <input type="text" id="editarNombreEmpresa" placeholder="Nombre de empresa">
+      </div>
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-id-card"></i>
+        <input type="text" id="editarRuc" placeholder="RUC (11 dígitos)">
+      </div>
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-phone"></i>
+        <input type="text" id="editarTelefono" placeholder="Teléfono (9 dígitos)">
+      </div>
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" id="editarCorreo" placeholder="Correo electrónico">
+      </div>
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-location-dot"></i>
+        <input type="text" id="editarDireccion" placeholder="Dirección (opcional)">
+      </div>
+    </div>
+    <div class="modal-proveedor-actions">
+      <button onclick="guardarEdicionProveedor()" style="flex:1;height:44px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;background:var(--primary-gradient);color:white;border:none;cursor:pointer"><i class="fa-solid fa-floppy-disk"></i> Guardar Cambios</button>
+      <button onclick="cerrarModalEditarProveedor()" class="btn-secondary" style="flex:1;height:44px;border-radius:var(--radius-sm);font-size:14px;font-weight:700">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

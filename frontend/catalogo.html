@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprar Productos - ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li id="menuInicio" onclick="ir('inicio.html')" style="display:none"><i class="fa-solid fa-house"></i> Inicio</li>
+        <li id="menuDashboard" onclick="ir('dashboard.html')"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+        <li id="menuProductos" onclick="ir('productos.html')"><i class="fa-solid fa-box"></i> Añadir Productos</li>
+        <li id="menuUsuarios" onclick="ir('usuarios.html')"><i class="fa-solid fa-users"></i> Usuarios</li>
+        <li id="menuProveedores" onclick="ir('proveedores.html')"><i class="fa-solid fa-truck"></i> Proveedores</li>
+        <li id="menuOfertas" onclick="ir('ofertas.html')"><i class="fa-solid fa-tag"></i> Ofertas</li>
+          </li>
+        <li onclick="ir('pedidos.html')">
+          <i class="fa-solid fa-bag-shopping"></i> Pedidos
+        </li>
+        <li class="active">
+          <i class="fa-solid fa-store"></i> Comprar productos
+        </li>
+        <li onclick="ir('carrito.html')">
+          <i class="fa-solid fa-cart-shopping"></i> Carrito
+          <span id="contadorCarrito" class="cart-badge">0</span>
+        </li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar">
+      <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+    </button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>COMPRAR PRODUCTOS</h1>
+        <p class="subtitle">Seleccione los productos que desea adquirir</p>
+      </div>
+      <div class="usuario-box">
+        <i class="fa-solid fa-user"></i>
+        <span id="usuario"></span> - <span id="rol"></span>
+      </div>
+    </div>
+
+    <div class="catalogo-header">
+      <div class="catalogo-search">
+        <i class="fa-solid fa-search"></i>
+        <input type="text" id="buscarProducto" placeholder="Buscar producto por nombre..." onkeyup="cargarCatalogo()">
+      </div>
+      <div class="catalogo-stats" id="catalogoStats">
+        <span><i class="fa-solid fa-box"></i> <span id="totalProductosCatalogo">0</span> productos</span>
+      </div>
+    </div>
+
+    <div id="ofertasCatalogo"></div>
+
+    <div id="catalogoGrid" class="catalogo-grid"></div>
+
+    <div id="catalogoEmpty" class="catalogo-empty oculto">
+      <i class="fa-solid fa-box-open"></i>
+      <h3>No hay productos disponibles</h3>
+      <p>Los productos aparecerán aquí cuando sean registrados</p>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

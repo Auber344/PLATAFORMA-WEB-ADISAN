@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Productos - ADISAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div>
+      <h2 class="logo">ADISAN</h2>
+      <ul>
+        <li id="menuDashboard" onclick="ir('dashboard.html')"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+        <li class="active"><i class="fa-solid fa-box"></i> Añadir Productos</li>
+        <li id="menuUsuarios" onclick="ir('usuarios.html')"><i class="fa-solid fa-users"></i> Usuarios</li>
+        <li id="menuProveedores" onclick="ir('proveedores.html')"><i class="fa-solid fa-truck"></i> Proveedores</li>
+        <li id="menuOfertas" onclick="ir('ofertas.html')"><i class="fa-solid fa-tag"></i> Ofertas</li>
+        <li onclick="ir('pedidos.html')"><i class="fa-solid fa-bag-shopping"></i> Pedidos</li>
+        <li onclick="ir('catalogo.html')"><i class="fa-solid fa-store"></i> Comprar productos</li>
+        <li onclick="ir('carrito.html')"><i class="fa-solid fa-cart-shopping"></i> Carrito <span id="contadorCarrito" class="cart-badge">0</span></li>
+      </ul>
+    </div>
+    <button onclick="logout()" class="logout-sidebar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>AGREGAR PRODUCTOS</h1>
+        <p class="subtitle">Gestión de productos y presentaciones</p>
+      </div>
+      <div class="usuario-box"><span id="usuario"></span> - <span id="rol"></span></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-pen-to-square"></i> Registrar Producto</h2>
+      </div>
+
+      <div class="proveedor-global">
+        <label><i class="fa-solid fa-truck"></i> Proveedor General</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select id="proveedor" style="flex:1">
+            <option value="">Seleccionar proveedor</option>
+          </select>
+          <button type="button" onclick="abrirModalProveedor()" class="btn-secondary" style="width:44px;height:44px;padding:0;flex-shrink:0">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div id="productosContainer" class="productos-container"></div>
+      <br>
+
+      <div class="acciones-producto">
+        <button onclick="crearProducto()" class="btn-secondary"><i class="fa-solid fa-plus"></i> Nuevo Producto</button>
+        <button onclick="guardarProducto()"><i class="fa-solid fa-floppy-disk"></i> Guardar Producto</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-list"></i> Lista Productos</h2>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Presentaciones</th>
+              <th>Proveedor</th>
+              <th>Stock</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla"></tbody>
+        </table>
+        <div id="pagination" class="pagination"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="modalCategorias" class="modal-categorias oculto">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2><i class="fa-solid fa-tags"></i> Gestionar Categorías</h2>
+      <button onclick="cerrarModalCategorias()" class="btn-delete">×</button>
+    </div>
+    <div class="form-grid">
+      <input type="text" id="nombreCategoria" placeholder="Nombre categoría">
+      <input type="number" id="factorCategoria" placeholder="Valor">
+    </div>
+    <br>
+    <button onclick="guardarCategoria()"><i class="fa-solid fa-floppy-disk"></i> Guardar Categoría</button>
+    <br><br>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Valor</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaCategorias"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="modalProveedorRapido" class="modal-proveedor" style="display:none">
+  <div class="modal-proveedor-content">
+    <h2><i class="fa-solid fa-truck"></i> Nuevo Proveedor</h2>
+    <div class="form-grid" style="display:flex;flex-direction:column;gap:12px">
+      <input type="text" id="rapidoNombre" placeholder="Nombre de empresa">
+      <input type="text" id="rapidoRuc" placeholder="RUC">
+      <input type="text" id="rapidoTelefono" placeholder="Teléfono">
+      <input type="email" id="rapidoCorreo" placeholder="Correo electrónico">
+    </div>
+    <div class="modal-proveedor-actions">
+      <button onclick="guardarProveedorRapido()" style="flex:1;height:44px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;background:var(--primary-gradient);color:white;border:none;cursor:pointer"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+      <button onclick="cerrarModalProveedor()" class="btn-secondary" style="flex:1;height:44px;border-radius:var(--radius-sm);font-size:14px;font-weight:700">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

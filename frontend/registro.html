@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - ADISAN</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="login-body">
+<div class="login-container">
+  <div class="login-card registro-card">
+    <h1 class="login-title">REGISTRO</h1>
+    <p class="login-subtitle">Crear cuenta de cliente</p>
+    <div class="registro-grid">
+      <div class="input-group">
+        <label>Nombres <span class="required">*</span></label>
+        <input type="text" id="nombres" placeholder="Ingrese nombres">
+      </div>
+      <div class="input-group">
+        <label>Apellidos <span class="required">*</span></label>
+        <input type="text" id="apellidos" placeholder="Ingrese apellidos">
+      </div>
+      <div class="input-group">
+        <label>DNI <span class="required">*</span></label>
+        <input type="text" id="dni" maxlength="8" placeholder="8 dígitos">
+      </div>
+      <div class="input-group">
+        <label>RUC <span class="optional">(opcional)</span></label>
+        <input type="text" id="ruc" maxlength="11" placeholder="11 dígitos para factura">
+      </div>
+      <div class="input-group">
+        <label>Teléfono <span class="required">*</span></label>
+        <input type="text" id="telefono" placeholder="Ingrese teléfono">
+      </div>
+      <div class="input-group">
+        <label>Correo <span class="required">*</span></label>
+        <input type="email" id="correo" placeholder="correo@ejemplo.com">
+      </div>
+      <div class="input-group">
+        <label>Dirección <span class="optional">(opcional)</span></label>
+        <input type="text" id="direccion" placeholder="Av./Jr./Calle, Nro, Distrito">
+      </div>
+      <div class="input-group">
+        <label>Usuario <span class="required">*</span></label>
+        <input type="text" id="usuario" placeholder="Mín. 3 caracteres">
+      </div>
+      <div class="input-group full-width">
+        <label>Contraseña <span class="required">*</span></label>
+        <input type="password" id="password" placeholder="Mín. 4 caracteres">
+      </div>
+    </div>
+    <button class="btn-login" onclick="registrar()">Registrarse</button>
+    <button class="btn-register" onclick="window.location='index.html'">Volver</button>
+    <p id="mensajeRegistro" class="mensaje-error"></p>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.body.style.visibility = 'visible';
+</script>
+<script>
+async function registrar() {
+  const nombres = document.getElementById('nombres').value.trim();
+  const apellidos = document.getElementById('apellidos').value.trim();
+  const dni = document.getElementById('dni').value.trim();
+  const ruc = document.getElementById('ruc').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const correo = document.getElementById('correo').value.trim();
+  const direccion = document.getElementById('direccion').value.trim();
+  const usuario = document.getElementById('usuario').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const mensaje = document.getElementById('mensajeRegistro');
+  mensaje.innerText = '';
+
+  if (!nombres || !apellidos || !dni || !telefono || !correo || !usuario || !password) {
+    mensaje.innerText = 'Complete todos los campos obligatorios';
+    return;
+  }
+
+  if (!/^\d{8}$/.test(dni)) {
+    mensaje.innerText = 'El DNI debe tener 8 dígitos numéricos';
+    return;
+  }
+
+  if (ruc && !/^\d{11}$/.test(ruc)) {
+    mensaje.innerText = 'El RUC debe tener 11 dígitos numéricos';
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(correo)) {
+    mensaje.innerText = 'Ingrese un correo electrónico válido';
+    return;
+  }
+
+  if (usuario.length < 3) {
+    mensaje.innerText = 'El usuario debe tener al menos 3 caracteres';
+    return;
+  }
+
+  if (password.length < 4) {
+    mensaje.innerText = 'La contraseña debe tener al menos 4 caracteres';
+    return;
+  }
+
+  if (telefono.length < 7) {
+    mensaje.innerText = 'Ingrese un teléfono válido';
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/registro', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombres, apellidos, dni, ruc: ruc || null, telefono, correo, direccion: direccion || null, usuario, password, rol: 'cliente' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await Swal.fire({ icon: 'success', title: 'Registro exitoso', timer: 1500, showConfirmButton: false });
+      window.location = 'index.html';
+    } else {
+      mensaje.innerText = data.message || 'No se pudo registrar';
+    }
+  } catch (error) {
+    mensaje.innerText = 'Error de conexión';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') registrar();
+});
+</script>
+</body>
+</html>
